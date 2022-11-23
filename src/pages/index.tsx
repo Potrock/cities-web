@@ -1,10 +1,8 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount, useContractRead } from "wagmi";
 import { address, abi } from "../contracts/Chunk";
-
-import { useEffect, useRef, useState } from "react";
-import ChunkView from "../components/ChunkView";
-import OwnedChunks from "../components/OwnedChunks";
+import MintChunk from "../components/MintChunk";
+import GridMapView from "../components/GridMap/GridMapView";
 
 function Page() {
   const { isConnected, address: userAddress } = useAccount();
@@ -14,6 +12,14 @@ function Page() {
     abi: abi,
     functionName: "balanceOf",
     args: [userAddress],
+    watch: true,
+  });
+
+  const { data: chunksExisting } = useContractRead({
+    address: address,
+    abi: abi,
+    functionName: "totalSupply",
+    watch: true,
   });
 
   return (
@@ -28,8 +34,8 @@ function Page() {
           </p>
         </div>
       )}
-
-      <OwnedChunks amount={chunkBalance} />
+      <MintChunk />
+      <GridMapView amountOwned={chunkBalance} amountExisting={chunksExisting}/>
     </>
   );
 }

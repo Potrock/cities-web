@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useAccount, useContractRead } from "wagmi";
 import { address, abi } from "../contracts/Chunk";
 
-export default function ChunkView({ tokenId }) {
+export default function ChunkView({ tokenId, owned }) {
   const [serverData, setServerData] = useState({});
   const { data, isLoading, isSuccess } = useContractRead({
     address: address,
@@ -20,7 +20,6 @@ export default function ChunkView({ tokenId }) {
     const fetchData = async () => {
         const serverData = await fetch(data);
         const res = await serverData.json();
-        console.log(res);
         setServerData(res);
     }
 
@@ -29,7 +28,7 @@ export default function ChunkView({ tokenId }) {
 
   if (isLoading || !serverData.image) {
     return (
-      <div className="card bg-base-100 shadow-xl">
+      <div className="card bg-base-100 shadow-m">
         <figure>
           <div>
             <div role="status">
@@ -60,7 +59,7 @@ export default function ChunkView({ tokenId }) {
     );
   } else {
     return (
-      <div className="card bg-base-200 shadow-xl">
+      <div className="card bg-base-200 shadow-m">
         <figure className="">
           <Image src={serverData.image} width={100} height={80} alt={tokenId} />
         </figure>

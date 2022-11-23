@@ -1,34 +1,16 @@
-import { useEffect, useState } from "react";
-import { useAccount, useContractReads } from "wagmi";
 import ChunkView from "./ChunkView";
-import { address, abi } from "../contracts/Chunk";
 
-export default function OwnedChunks({ amount }) {
-  const { address: userAddress } = useAccount();
-  const [contracts, setContracts] = useState([]);
-  const { data, isError, isLoading } = useContractReads({
-    contracts: contracts
-  })
+export default function OwnedChunks({ ownedChunks }) {
 
-  useEffect(() => {
-    const contractList = [];
-    for (let i = 0; i < amount; i++) {
-        contractList.push({
-            address: address,
-            abi: abi,
-            functionName: 'tokenOfOwnerByIndex',
-            args: [userAddress, i]
-        })
-    }
-    setContracts(contractList);
-  }, [amount])
-
-  if (isLoading) {
-    return (<p>Loading...</p>)
+  if (ownedChunks.length == 0 || !ownedChunks[0]) {
+    return <p>You don't own any chunks!</p>;
+  } else {
+    return (
+      <div className="pt-4 pb-4 grid overflow-hidden grid-cols-6 gap-1.5">
+        {ownedChunks.map((id) => (
+          <ChunkView tokenId={id.toString()} key={id.toString()} owned={true} />
+        ))}
+      </div>
+    );
   }
-  return (
-    <div className="pt-4 grid overflow-hidden grid-cols-6 grid-rows-6 gap-1.5">
-      {data?.map((id) => <ChunkView tokenId={id.toString()} key={id.toString()}/>)}
-    </div>
-  );
 }
