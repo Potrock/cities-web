@@ -24,7 +24,7 @@ function Page() {
       {isConnected && (
         <div>
           <p className="text-lg">
-            Your chunk balance is: {chunkBalance.toString()}
+            Your chunk balance is: {chunkBalance && chunkBalance.toString()}
           </p>
         </div>
       )}

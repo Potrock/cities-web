@@ -21,7 +21,7 @@ export default function OwnedChunks({ amount }) {
         })
     }
     setContracts(contractList);
-  }, [])
+  }, [amount])
 
   if (isLoading) {
     return (<p>Loading...</p>)
