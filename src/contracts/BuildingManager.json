@@ -1,16 +1,41 @@
 {
-  "address": "0x5D51154368e651385585EaBD1C80D9C62bEf445c",
+  "address": "0x012ad41Eb2798Fe9330aE4a8761592A818A4371E",
   "abi": [
     {
       "inputs": [
         {
           "internalType": "address",
-          "name": "_chunk",
+          "name": "_city",
           "type": "address"
         }
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_buildingId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "_tier",
+          "type": "uint8"
+        }
+      ],
+      "name": "BuildingAdded",
+      "type": "event"
     },
     {
       "anonymous": false,
@@ -45,7 +70,7 @@
         },
         {
           "internalType": "uint8",
-          "name": "_amount",
+          "name": "_tier",
           "type": "uint8"
         }
       ],
@@ -75,10 +100,10 @@
     },
     {
       "inputs": [],
-      "name": "chunk",
+      "name": "city",
       "outputs": [
         {
-          "internalType": "contract IChunk",
+          "internalType": "contract ICity",
           "name": "",
           "type": "address"
         }
@@ -107,7 +132,7 @@
           "type": "uint256"
         }
       ],
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -145,29 +170,6 @@
         }
       ],
       "name": "registerBuilding",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "_buildingId",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_tokenId",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint8",
-          "name": "_amount",
-          "type": "uint8"
-        }
-      ],
-      "name": "removeBuildingFrom",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

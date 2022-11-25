@@ -1,4 +1,4 @@
-  export const address = "0x2A7f5457BeaDeE1bfE2c5ba941E7EB763c0dCF57";
+  export const address = "0x00d7a0c1e6567064A7AAC1036914C6f20Bef1617";
   export const abi = [
     {
       "inputs": [
@@ -192,7 +192,7 @@
     },
     {
       "inputs": [],
-      "name": "mintChunk",
+      "name": "mint",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

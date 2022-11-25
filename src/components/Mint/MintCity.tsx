@@ -1,13 +1,13 @@
 import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
-import { address, abi } from "../contracts/Chunk";
+import { address, abi } from "../../contracts/City";
 
-export default function MintChunk() {
+export default function MintCity() {
   const { isConnected } = useAccount();
 
   const { config, error } = usePrepareContractWrite({
     address: address,
     abi: abi,
-    functionName: "mintChunk",
+    functionName: "mint",
   });
 
   const { write: mint, isLoading, isError } = useContractWrite(config);
@@ -15,11 +15,11 @@ export default function MintChunk() {
   return (
     <>
       <button
-        className="btn"
+        className="btn btn-accent"
         disabled={!isConnected || isLoading}
         onClick={mint}
       >
-        Mint a Chunk
+        Mint a City
       </button>
     </>
   );
