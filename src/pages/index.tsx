@@ -48,7 +48,7 @@ export default function Landing() {
                   </div>
                 </div>
                 <div>
-                  You, and only you, own your city. Trade it, sell it, hodl it. All stats, actions are completely on-chain and non-custodial.
+                  You, and only you, own your city. Trade it, sell it, hodl it. All stats, and actions are completely on-chain and non-custodial.
                 </div>
               </div>
             </div>
