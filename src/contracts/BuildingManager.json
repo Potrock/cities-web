@@ -1,5 +1,5 @@
 {
-  "address": "0x012ad41Eb2798Fe9330aE4a8761592A818A4371E",
+  "address": "0x2b9670Aa61FaF188F491c82e716cA7dBE98d0B27",
   "abi": [
     {
       "inputs": [
@@ -91,11 +91,34 @@
       "outputs": [
         {
           "internalType": "address",
-          "name": "",
+          "name": "contractAddress",
           "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "cost",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_buildingId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "buyBuilding",
+      "outputs": [],
+      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -167,10 +190,21 @@
           "internalType": "address",
           "name": "_address",
           "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_cost",
+          "type": "uint256"
         }
       ],
       "name": "registerBuilding",
-      "outputs": [],
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
       "stateMutability": "nonpayable",
       "type": "function"
     },
@@ -190,6 +224,13 @@
         }
       ],
       "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdraw",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

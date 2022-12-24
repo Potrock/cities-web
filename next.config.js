@@ -1,5 +1,5 @@
 module.exports = {
     images: {
-        domains: ['encrypted-tbn0.gstatic.com', 'i.ibb.co']
+        domains: ['i.postimg.cc']
     }
   }

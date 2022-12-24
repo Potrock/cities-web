@@ -13,6 +13,6 @@ export default async function handler(
 		id: id,
 		// houseCount: buildingInfo.houseCount,
 		farmCount: buildingInfo.farmCount,
-		image: "https://i.ibb.co/xhGK9vw/DALL-E-2022-11-24-11-31-25-pixel-art-of-the-top-down-view-of-a-farm-with-a-house-and-a-road.png",
+		image: "https://i.postimg.cc/0yZTF3VS/overhead-image-town.png",
 	});
 }
