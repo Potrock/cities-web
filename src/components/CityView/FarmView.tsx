@@ -50,7 +50,7 @@ export default function FarmView({ tokenId, idx, isOwned }: FarmParams) {
 			<div className="pl-14 py-4">
 				{(farmInfo && farmInfo[1] && eligibleFood) && <p className="inline">Tier {farmInfo[1]} Ready to harvest {eligibleFood.toString()} Food</p>}
 				{!eligibleFood && <p>No Food Ready!</p>}
-				{isOwned && <button className="ml-4 btn btn-secondary inline pl-4" disabled={!harvestActive} onClick={harvestWrite}>Harvest</button>}
+				<button className="ml-4 btn btn-secondary inline pl-4" disabled={!harvestActive && !isOwned} onClick={harvestWrite}>Harvest</button>
 			</div>
 		</>
 	)
