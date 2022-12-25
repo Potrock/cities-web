@@ -52,7 +52,7 @@ export default function Page() {
 
 	useEffect(() => {
 		if (owner) {
-			if (owner.toString().equals(address.toString())) {
+			if (owner.toString() == address.toString()) {
 				setIsOwned(true);
 			}
 		}
