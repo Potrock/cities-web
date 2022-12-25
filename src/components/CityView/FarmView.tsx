@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import { useContractRead, useContractWrite, usePrepareContractWrite } from "wagmi";
 import Farm from "../../contracts/Farm.json";
 
-export default function FarmView({ tokenId, idx }) {
+interface FarmParams {
+	tokenId: string;
+	idx: number;
+}
+
+export default function FarmView({ tokenId, idx }: FarmParams) {
     const [harvestActive, setHarvestActive] = useState("");
 
 	const {
@@ -18,7 +23,7 @@ export default function FarmView({ tokenId, idx }) {
 
     const {
         data: farmInfo,
-    } = useContractRead({
+    }: any = useContractRead({
         address: Farm.address,
         abi: Farm.abi,
         functionName: "getBuildingInfo",
@@ -31,7 +36,7 @@ export default function FarmView({ tokenId, idx }) {
 		functionName: "harvest",
 		args: [tokenId, idx],
 	});
-	const { write } = useContractWrite(config);
+	const { write: harvestWrite }: any = useContractWrite(config);
 
     useEffect(() => {
         if (eligibleFood && eligibleFood > 0) {
@@ -40,10 +45,12 @@ export default function FarmView({ tokenId, idx }) {
     }, [eligibleFood])
 
 	return (
-		<div className="pl-14 py-4">
-			{(farmInfo && eligibleFood) && <p className="inline">Tier {farmInfo[1]} Ready to harvest {eligibleFood.toString()} Food</p>}
-            {!eligibleFood && <p>No food ready!</p>}
-            <button className="ml-4 btn btn-secondary inline pl-4" disabled={!harvestActive} onClick={write}>Harvest</button>
-		</div>
-	);
+		<>
+			<div className="pl-14 py-4">
+				{(farmInfo && farmInfo[1] && eligibleFood) && <p className="inline">Tier {farmInfo[1]} Ready to harvest {eligibleFood.toString()} Food</p>}
+				{!eligibleFood && <p>No Food Ready!</p>}
+				<button className="ml-4 btn btn-secondary inline pl-4" disabled={!harvestActive} onClick={harvestWrite}>Harvest</button>
+			</div>
+		</>
+	)
 }

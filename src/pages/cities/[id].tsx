@@ -7,12 +7,12 @@ import FarmView from "../../components/CityView/FarmView";
 import { address, abi } from "../../contracts/City";
 
 export default function Page() {
-	const [serverData, setServerData] = useState([]);
-	const [idxList, setIdxList] = useState([]);
+	const [serverData, setServerData]: any = useState([]);
+	const [idxList, setIdxList]: any = useState([]);
 	const router = useRouter();
 	const { id } = router.query;
 
-	const { data, isLoading, isSuccess } = useContractRead({
+	const { data, isLoading, isSuccess }: any = useContractRead({
 		address: address,
 		abi: abi,
 		functionName: "tokenURI",
@@ -68,8 +68,8 @@ export default function Page() {
 							Stats
 						</p>
 						<p className="pl-20 text-lg">Farms</p>
-						{idxList.map((idx) => (
-							<FarmView tokenId={id} idx={idx} key={idx} />
+						{idxList.map((idx: number) => (
+							<FarmView tokenId={idx.toString()} idx={idx} key={idx} />
 						))}
 					</div>
 				</div>

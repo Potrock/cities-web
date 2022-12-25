@@ -7,13 +7,17 @@ import {
 } from "wagmi";
 import { address, abi } from "../../contracts/City";
 
-export default function CityView({ tokenId }) {
+interface CityProps {
+	tokenId: number;
+}
+
+export default function CityView({ tokenId }: CityProps) {
 	const { address: userAddress } = useAccount();
 
 	const [owned, setOwned] = useState(false);
 
-	const [serverData, setServerData] = useState({});
-	const { data, isLoading, isSuccess } = useContractRead({
+	const [serverData, setServerData]: any = useState({});
+	const { data, isLoading, isSuccess }: any = useContractRead({
 		address: address,
 		abi: abi,
 		functionName: "tokenURI",
@@ -88,7 +92,7 @@ export default function CityView({ tokenId }) {
 						src={serverData.image}
 						width={100}
 						height={80}
-						alt={tokenId}
+						alt={tokenId.toString()}
 					/>
 				</figure>
 				<div className="card-body">

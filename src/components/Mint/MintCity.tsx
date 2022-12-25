@@ -10,7 +10,7 @@ export default function MintCity() {
     functionName: "mint",
   });
 
-  const { write: mint, isLoading, isError } = useContractWrite(config);
+  const { write: mint, isLoading, isError }: any = useContractWrite(config);
 
   return (
     <>

@@ -7,9 +7,9 @@ import CityView from "../components/GridMap/CityView";
 
 export default function Explorer() {
 	const { isConnected, address: userAddress } = useAccount();
-	const [tokenIds, setTokenIds] = useState([]);
+	const [tokenIds, setTokenIds]: any = useState([]);
 
-	const { data: cityBalance } = useContractRead({
+	const { data: cityBalance }: any = useContractRead({
 		address: address,
 		abi: abi,
 		functionName: "balanceOf",
@@ -53,20 +53,20 @@ export default function Explorer() {
 								<MintCity />
 								<span className="self-center text-xl text-white pl-6">
 									Cities under your control: {" "}
-									{!cityBalance && (
+									{!cityBalance && 
 										<p className="inline">0</p>
-									)}
-									{cityBalance && (
+									}
+									{cityBalance && 
 										<p className="inline">
 											{cityBalance.toString()}
 										</p>
-									)}
+									}
 								</span>
 							</div>
 						)}
 					</div>
 					<div className="pt-4 pb-4 grid overflow-hidden grid-cols-6 gap-1.5">
-						{tokenIds.map((tokenId) => (
+						{tokenIds.map((tokenId: any) => (
 							<CityView tokenId={tokenId} key={tokenId} />
 						))}
 					</div>
