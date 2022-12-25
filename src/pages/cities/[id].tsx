@@ -51,8 +51,10 @@ export default function Page() {
 	}, [serverData]);
 
 	useEffect(() => {
-		if (owner.toString().equals(address.toString())) {
-			setIsOwned(true);
+		if (owner) {
+			if (owner.toString().equals(address.toString())) {
+				setIsOwned(true);
+			}
 		}
 	}, [owner])
 
@@ -84,7 +86,7 @@ export default function Page() {
 						</p>
 						<p className="pl-20 text-lg">Farms</p>
 						{idxList.map((idx: number) => (
-							<FarmView tokenId={idx.toString()} idx={idx} key={idx} isOwned={isOwned}/>
+							<FarmView tokenId={idx.toString()} idx={idx} key={idx} isOwned={isOwned} />
 						))}
 					</div>
 				</div>
