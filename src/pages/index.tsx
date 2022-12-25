@@ -16,7 +16,7 @@ export default function Landing() {
                 <p>City Builder</p>
               </div>
               <div className="md:text-center lg:text-center md:block lg:block">
-                <p>Fully decentralized on-chain crypto strategy game.</p>
+                <p>Fully decentralized on chain crypto strategy game.</p>
                 <p>Claim your city. Build upgrades. All on-chain and non-custodial.</p>
               </div>
             </div>
