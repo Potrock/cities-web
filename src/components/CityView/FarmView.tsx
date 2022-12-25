@@ -5,9 +5,10 @@ import Farm from "../../contracts/Farm.json";
 interface FarmParams {
 	tokenId: string;
 	idx: number;
+	isOwned: boolean;
 }
 
-export default function FarmView({ tokenId, idx }: FarmParams) {
+export default function FarmView({ tokenId, idx, isOwned }: FarmParams) {
     const [harvestActive, setHarvestActive] = useState("");
 
 	const {
@@ -49,7 +50,7 @@ export default function FarmView({ tokenId, idx }: FarmParams) {
 			<div className="pl-14 py-4">
 				{(farmInfo && farmInfo[1] && eligibleFood) && <p className="inline">Tier {farmInfo[1]} Ready to harvest {eligibleFood.toString()} Food</p>}
 				{!eligibleFood && <p>No Food Ready!</p>}
-				<button className="ml-4 btn btn-secondary inline pl-4" disabled={!harvestActive} onClick={harvestWrite}>Harvest</button>
+				{isOwned && <button className="ml-4 btn btn-secondary inline pl-4" disabled={!harvestActive} onClick={harvestWrite}>Harvest</button>}
 			</div>
 		</>
 	)

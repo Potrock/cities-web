@@ -2,13 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useContractRead } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 import FarmView from "../../components/CityView/FarmView";
 import { address, abi } from "../../contracts/City";
 
 export default function Page() {
+	const { address: userAddress } = useAccount();
 	const [serverData, setServerData]: any = useState([]);
 	const [idxList, setIdxList]: any = useState([]);
+	const [isOwned, setIsOwned] = useState(false);
 	const router = useRouter();
 	const { id } = router.query;
 
@@ -16,6 +18,13 @@ export default function Page() {
 		address: address,
 		abi: abi,
 		functionName: "tokenURI",
+		args: [id],
+	});
+
+	const { data: owner }: any = useContractRead({
+		address: address,
+		abi: abi,
+		functionName: "ownerOf",
 		args: [id],
 	});
 
@@ -40,6 +49,12 @@ export default function Page() {
 		}
 		setIdxList(l);
 	}, [serverData]);
+
+	useEffect(() => {
+		if (owner.toString().equals(address.toString())) {
+			setIsOwned(true);
+		}
+	}, [owner])
 
 	return (
 		<>
@@ -69,7 +84,7 @@ export default function Page() {
 						</p>
 						<p className="pl-20 text-lg">Farms</p>
 						{idxList.map((idx: number) => (
-							<FarmView tokenId={idx.toString()} idx={idx} key={idx} />
+							<FarmView tokenId={idx.toString()} idx={idx} key={idx} isOwned={isOwned}/>
 						))}
 					</div>
 				</div>
