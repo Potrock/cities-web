@@ -37,7 +37,7 @@ export default function Explorer() {
 
 	return (
 		<>
-			<div className="min-h-screen flex flex-col">
+			<div className="min-h-screen bg-gray-900 flex flex-col">
 				<div className="items-center mx-auto mt-4 px-4 py-8">
 					<div className="text-5xl justify-center flex font-medium text-white">
 						City Explorer

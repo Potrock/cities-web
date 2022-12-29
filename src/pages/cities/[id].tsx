@@ -59,8 +59,8 @@ export default function Page() {
 	}, [owner])
 
 	return (
-		<>
-			<div className="flex justify-center">
+		<div className="bg-gray-900 min-h-screen">
+			<div className="flex justify-center bg-gray-900">
 				<h1 className="pt-10 text-4xl text-bold">City #{id}</h1>
 			</div>
 			<div className="pt-5 flex justify-center">
@@ -69,7 +69,7 @@ export default function Page() {
 				</Link>
 			</div>
 			<div className="pt-24 grid overflow-hidden grid-cols-3 grid-rows-1 gap-1.5">
-				<div className="col-start-2 bg-gray-900 rounded-xl">
+				<div className="col-start-2 bg-gray-800 rounded-xl">
 					<div className="relative px-4 h-80">
 						{serverData.image && (
 							<Image
@@ -91,6 +91,6 @@ export default function Page() {
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
