@@ -4,7 +4,7 @@ import homeLogo from "../public/homeLogo.png"
 
 export default function Landing() {
 	return (
-    <div className="bg-gray-900 px-8 pt-6">
+    <div className="bg-gray-900 min-h-screen px-8 pt-6">
       <div className="relative z-0 h-full overflow-y-auto focus:outline-none">
         <div className="items-center px-4 py-8 mx-auto mt-4 sm:mt-6 sm:px-8 md:px-12">
           <div className="relative px-4 md:px-24">
